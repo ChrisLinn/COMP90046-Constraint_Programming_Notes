@@ -32,9 +32,9 @@ language;
 ## discrete opt
 + math
     * best possible value
-+ what does ... mean
-    * (x = y ∨ x = -y) ∧ x ≥ y ∧ x ≥ -y
-        - x = |y|
++ what does these mean
+    * `(x = y ∨ x = -y) ∧ x ≥ y ∧ x ≥ -y`
+        - `x = |y|`
 + minimization
 
 ## The Zinc Mantra
