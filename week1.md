@@ -55,3 +55,54 @@ language;
 + Flattening (How MiniZinc works)
 + CP solving (and programming search)
 + MIP solving
+
+## MiniZinc(.mzn)
++ parameter definitions
+    * assigned with a value but only __once__
+    * equivalent:
+        ```
+        int: i=3;
+        par int: i=3;
+        int: i; i=3;
+        ```
++ decision variable definitions
+    * assigned with a __fix value expr__ but only __once__
+    * equivalent:
+        ```
+        var int: i; constraint i>= 0; constraint i <= 4;
+        var 0..4: i;
+        var {0,1,2,3,4}: i;
+        ```
+    * equivalent:
+        ```
+        var int: i = x+3;
+        var int: i; constraint i = x+3;
+        ```
++ constraints
+    * can be 
+        - liner
+        - modulo, multiplication, division
+        - disequality
+        - ...
+    * objective
++ output
+    * do not extend more than one line
+    * `show(v)` 
+        - the value of v as a string
+        - `\(v)` 
+            + show `v` inside a string literal
+        - ++
+            + concatenation
+    * if no output
+        - output all declared variables which are not assigned with an expr
+        - so no need to seek an optimal soltion
++ `-----` 
+    * indicates a solution
++ `=====` 
+    * best solution
+
+## Linear models
++ linear programming
+    * interger case: NP-hard
++ basis of most real-word discrete optimization
+
