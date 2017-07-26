@@ -1,4 +1,4 @@
-# week 1
+# Week 1
 
 ## Objectives
 + model constraint satisfaction and optimization problems of reasonable complexity using a modelling
@@ -29,7 +29,7 @@ language;
 + (Recommended) Operations Research: Applications and Algorithms. Wayne L. Winston, Brooks Cole, 1998. Introduction to linear programming, mixed integer programming
 + (Recommended) Principles of Constraint Programming. Krzysztof Apt. Cambridge. 2003. A highly theoretical book, interesting and well written.
 
-## discrete opt
+## Discrete optimization
 + math
     * best possible value
 + what does these mean
