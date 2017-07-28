@@ -1,13 +1,13 @@
 # Week 1
 
 ## Objectives
-+ model constraint satisfaction and optimization problems of reasonable complexity using a modelling
++ __model__ constraint satisfaction and optimization problems of reasonable complexity using a modelling
 language;
-+ explain (to a senior computer science student) how some constraint solvers work (e.g. linear programming, finite domain propagation, Boolean satisfaction);
++ explain (to a senior computer science student) how some constraint __solvers__ work (e.g. linear programming, finite domain propagation, Boolean satisfaction);
 + use the MiniZinc modelling language to model integer constraint problems;
-+ evaluate the suitability of a particular constraint model for solving a problem;
-+ program different effective search strategies for combinatorial problems;
-+ improve the execution of a constraint program by reasoning about its search behaviour
++ __evaluate__ the suitability of a particular constraint model for solving a problem;
++ program different effective search strategies for __combinatorial problems__;
++ __improve__ the execution of a constraint program by reasoning about its search behaviour
 
 ## Syllabus
 + Modelling
@@ -56,7 +56,8 @@ language;
 + CP solving (and programming search)
 + MIP solving
 
-## MiniZinc(.mzn)
+## MiniZinc
+### .mzn
 + parameter definitions
     * assigned with a value but only __once__
     * equivalent:
@@ -84,25 +85,73 @@ language;
         - modulo, multiplication, division
         - disequality
         - ...
-    * objective
++ objective
 + output
     * do not extend more than one line
     * `show(v)` 
         - the value of v as a string
         - `\(v)` 
             + show `v` inside a string literal
-        - ++
+        - `++`
             + concatenation
     * if no output
         - output all declared variables which are not assigned with an expr
         - so no need to seek an optimal soltion
-+ `-----` 
+            ```
+            var 100..800: army;
+
+            constraint army mod 5 = 2;
+            constraint army mod 7 = 2;
+            constraint army mod 12 = 1;
+
+            solve satisfy; 
+            ```
++ `-----------------------` 
     * indicates a solution
-+ `=====` 
++ `=======================` 
     * best solution
++ `=====UNSATISFIABLE=====`
+
+### .dzn
++ data file
+    * `minizinc armyd.mzn army.dzn`
+    * or
+        - `minizinc armyd.mzn -D”budget = 20000;”`
+        - IDE
+            + load `.dzn`
+            + enter in a popup window
+            + ide will not ask for a data file if no para
+                * to specify decision var, use _configuration_ tab
+                * or "run this data file" for a model in a proj
+    * multiple data files
+    * `minizinc model.mzn d1.dzn d2.dzn`
 
 ## Linear models
 + linear programming
     * interger case: NP-hard
 + basis of most real-word discrete optimization
 
+## Graph Coloring
++ enumerated types
+    * declare
+        - `enum COLOR = { };`
+    * use
+        - `[var] enum_name: var_name`
+    * can be used in
+        - decisions
+        - paras
+        - array indices
+        - sets
++ application
+    * register allocation
+    * timetabling
++ pure graph coloring is better handled by specialized alogrithms
++ if add some side constraints about how specific parts of the graph should be colored, then using a general discrete optimization approach like MiniZinc
++ or `enum: COLOR;` in _color.mzn_ and `COLOR={R,W,B,G,P};` in _color.dzn_
+
+## Models and Instances
++ A model is a formal description of a class of (in our case) optimization problems
++ An instance is one particular optimization problem
+
+## Not all solvers are qual
++ MIP solvers cannot express multiplication of continuous variables, polynomial
