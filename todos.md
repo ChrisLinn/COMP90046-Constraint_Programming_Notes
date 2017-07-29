@@ -1,4 +1,3 @@
 # TODOS
-
-+ week1.pdf
-+ coursera week1
++ Arrays-and-Comprehensions.pdf
++ workshop-1 temperature

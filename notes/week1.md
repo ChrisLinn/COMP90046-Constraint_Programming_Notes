@@ -96,6 +96,8 @@ language;
         - modulo, multiplication, division
         - disequality
         - ...
+    * `forall(i in range)(bool-expression)`
+    * `sum(i in range)(expression)`
 + objective
 + output
     * do not extend more than one line
