@@ -180,11 +180,56 @@ language;
     % products
     enum PRODUCT;
     % Profit per unit for each product
-    array[PRODUCT] of float: profit; 
-
-    %two dimensional array declaration
-    array[PRODUCT,RESOURCE] of float: consumption; 
+    array[PRODUCT] of float: profit;
+    
+    % resources
+    enum RESOURCE;
+    % Amount of each resource available
+    array[RESOURCE] of float: capacity;
+    
+    % Units of each resource required to produce
+    % 1 unit of product
+    array[PRODUCT,RESOURCE] of float: consumption; %two dimensional
+array declaration
     ```
++  
+    ```
+    constraint forall(r in RESOURCE)(
+        sum (p in PRODUCT)
+            (consumption[p, r] * produce[p]) <= capacity[r]
+    ); 
+    ```
++ An array can be multi-dimensional
+    * `array[index_set1,index_set 2, …] of type`
+        - index set
+            + an integer range or enumerated type
+            + or a fixed set expression whose value is a range
++ Elements of an array can be anything but another array
+    * i.e. no nested array
++ `|` for 2D arrays
+    * separates rows 
++ Arrays on any dimension __(≤ 6)__ can be initialised using the __arraynd__ family of functions which turns a 1D array into an nD array
+    ```
+    consumption = array2d(1..5, 1..4,
+         [1.5, 1.0, 1.0, 1.0,
+         2.0, 0.0, 2.0, 0.0,
+         1.5, 0.5, 1.0, 1.0,
+         0.5, 1.0, 0.9, 1.5,
+         0.1, 2.5, 0.1, 2.5];
+    ```
++ we can flatten an nD array into a list (1D array) using comprehension
+    ```
+    array[1..20] of int: list =
+         [consumption[i,j] | i in 1..5, j in 1..4]; 
+    ```
+    * array comprehension
+        - `[ expr | generator1, generator2, … ]`
+        - `[ expr | generator1, generator2, … where test ]`
+            ```
+            [i + j | i, j in 1..4 where i < j]
+            = [1+2, 1+3, 1+4, 2+3, 2+4, 3+4]
+            = [3, 4, 5, 5, 6, 7] 
+            ```
 
 ## Models and Instances
 + A model is a formal description of a class of (in our case) optimization problems
