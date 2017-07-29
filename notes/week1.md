@@ -230,6 +230,16 @@ array declaration
             = [1+2, 1+3, 1+4, 2+3, 2+4, 3+4]
             = [3, 4, 5, 5, 6, 7] 
             ```
++ iteration
+    * Lists of numbers
+        - sum
+        - product
+        - min
+        - max 
+    * Lists of constraints
+        - forall
+            + `forall(i,j in 1..10 where i < j)  (a[i] != a[j]) ` is equivalent to (1-argument forall) `forall([a[i] != a[j] | i,j in 1..10 where i < j])`
+        - exists
 
 ## Models and Instances
 + A model is a formal description of a class of (in our case) optimization problems
