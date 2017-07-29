@@ -199,6 +199,7 @@ array declaration
             (consumption[p, r] * produce[p]) <= capacity[r]
     ); 
     ```
++ The builtin function length returns the length of a 1D array
 + An array can be multi-dimensional
     * `array[index_set1,index_set 2, …] of type`
         - index set
@@ -232,14 +233,40 @@ array declaration
             ```
 + iteration
     * Lists of numbers
-        - sum
-        - product
-        - min
-        - max 
+        - `sum`
+        - `product`
+        - `min`
+        - `max` 
     * Lists of constraints
-        - forall
+        - `forall`
             + `forall(i,j in 1..10 where i < j)  (a[i] != a[j]) ` is equivalent to (1-argument forall) `forall([a[i] != a[j] | i,j in 1..10 where i < j])`
-        - exists
+        - `exists`
+
+## Set
++ Sets are declared by `set of type`
+    * integers, floats or Booleans
+    * Sets can also be used as types
++ operators
+    * `in`
+    * `union`
+    * `intersect`
+    * `subset`
+    * `superset`
+    * `diff`
+    * `symdiff`
++ size of the set
+    * `card`
++  
+    ```
+    set of int: COL = 1..5;
+    set of int: ROW = 1..2;
+    array[ROW,COL] of int: c =
+        [| 250, 2, 75, 100, 0
+        | 200, 0, 150, 150, 75 |];
+    b = array2d(COL, ROW,
+        [c[j, i] | i in COL, j in ROW]); 
+    ```
+
 
 ## Models and Instances
 + A model is a formal description of a class of (in our case) optimization problems
@@ -247,6 +274,7 @@ array declaration
 
 ## Not all solvers are qual
 + MIP solvers cannot express multiplication of continuous variables, polynomial
++ for a mixed integer programming problem, G12 MIP is almost instant
 
 ## Golbal Constraint
 ```
@@ -255,3 +283,6 @@ include "alldifferent.mzn";
 
 constraint alldifferent([M1,M2,M3,M4,M5]); 
 ```
+
+## Pitfall
++ Calculations with floating point numbers can be inaccurate.
