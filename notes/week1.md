@@ -58,6 +58,12 @@ language;
 
 ## MiniZinc
 ### .mzn
++ Include
+    * will look in the current directory and in your MiniZinc library path
+    * for
+        - break large models into smaller pieces
+        - load library definitions of global constraints
+        - control which global constraint definition MiniZinc loads for a particular constraint solver
 + parameter definitions
     * assigned with a value but only __once__
     * equivalent:
@@ -65,6 +71,10 @@ language;
         int: i=3;
         par int: i=3;
         int: i; i=3;
+        ```
+    * Set Parameters
+        ```
+        set of type: name = fixed-set ;
         ```
 + decision variable definitions
     * assigned with a __fix value expr__ but only __once__
@@ -79,6 +89,7 @@ language;
         var int: i = x+3;
         var int: i; constraint i = x+3;
         ```
+    * Variable Lookup
 + constraints
     * can be 
         - liner
@@ -134,9 +145,16 @@ language;
 ## Graph Coloring
 + enumerated types
     * declare
-        - `enum COLOR = { };`
+        - `enum COLOR = { };` 
     * use
         - `[var] enum_name: var_name`
+        -  
+            ```
+            % products
+            enum PRODUCT;
+            % Profit per unit for each product
+            array[PRODUCT] of float: profit; 
+            ```
     * can be used in
         - decisions
         - paras
@@ -149,9 +167,34 @@ language;
 + if add some side constraints about how specific parts of the graph should be colored, then using a general discrete optimization approach like MiniZinc
 + or `enum: COLOR;` in _color.mzn_ and `COLOR={R,W,B,G,P};` in _color.dzn_
 
+## Array
++  
+    ```
+    par int: n;
+    array[1..n] of var 0..3: x;
+    ```
++  
+    ```
+    % products
+    enum PRODUCT;
+    % Profit per unit for each product
+    array[PRODUCT] of float: profit; 
+
+    %two dimensional array declaration
+    array[PRODUCT,RESOURCE] of float: consumption; 
+    ```
+
 ## Models and Instances
 + A model is a formal description of a class of (in our case) optimization problems
 + An instance is one particular optimization problem
 
 ## Not all solvers are qual
 + MIP solvers cannot express multiplication of continuous variables, polynomial
+
+## Golbal Constraint
+```
+% alldifferent messed up digits
+include "alldifferent.mzn";
+
+constraint alldifferent([M1,M2,M3,M4,M5]); 
+```
