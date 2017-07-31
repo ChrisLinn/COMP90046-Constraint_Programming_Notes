@@ -170,12 +170,12 @@ language;
 + or `enum: COLOR;` in _color.mzn_ and `COLOR={R,W,B,G,P};` in _color.dzn_
 
 ## Array
-+  
++ .
     ```
     par int: n;
     array[1..n] of var 0..3: x;
     ```
-+  
++ .
     ```
     % products
     enum PRODUCT;
