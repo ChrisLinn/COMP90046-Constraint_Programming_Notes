@@ -198,12 +198,12 @@ language;
             (consumption[p, r] * produce[p]) <= capacity[r]
     ); 
     ```
-+ The builtin function length returns the length of a 1D array
++ The builtin function `length` returns the length of a 1D array
 + An array can be multi-dimensional
     * `array[index_set1,index_set 2, …] of type`
         - index set
-            + an integer range or enumerated type
-            + or a fixed set expression whose value is a range
+            + an __integer__ range or __enumerated__ type
+            + or a fixed __set__ expression whose value is a range
 + Elements of an array can be anything but another array
     * i.e. no nested array
 + `|` for 2D arrays
