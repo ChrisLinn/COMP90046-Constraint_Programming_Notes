@@ -189,10 +189,9 @@ language;
     
     % Units of each resource required to produce
     % 1 unit of product
-    array[PRODUCT,RESOURCE] of float: consumption; %two dimensional
-array declaration
+    array[PRODUCT,RESOURCE] of float: consumption; %two dimensional array declaration
     ```
-+  
++ .
     ```
     constraint forall(r in RESOURCE)(
         sum (p in PRODUCT)
