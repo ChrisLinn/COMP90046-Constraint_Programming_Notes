@@ -1,3 +1,2 @@
 # TODOS
-+ Arrays-and-Comprehensions.pdf
-+ workshop-1 temperature
++ week2 lecture
