@@ -58,7 +58,7 @@ language;
 
 ## MiniZinc
 ### .mzn
-+ Include
++ `include`
     * will look in the current directory and in your MiniZinc library path
     * for
         - break large models into smaller pieces
@@ -146,9 +146,9 @@ language;
 
 ## Graph Coloring
 + enumerated types
-    * declare
+    * to declare
         - `enum COLOR = { };` 
-    * use
+    * to use
         - `[var] enum_name: var_name`
         -  
             ```
