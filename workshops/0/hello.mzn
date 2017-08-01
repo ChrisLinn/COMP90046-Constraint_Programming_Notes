@@ -1,3 +1,5 @@
+int: n;
+
 solve satisfy;
 
-output ["hello"];  /*output takes a list of strings*/
+output ["\(n)"];  /*output takes a list of strings*/
