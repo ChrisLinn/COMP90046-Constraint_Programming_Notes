@@ -1,2 +1,3 @@
 # TODOS
-+ week2 lecture
++ week2 tut
++ week2 asst
