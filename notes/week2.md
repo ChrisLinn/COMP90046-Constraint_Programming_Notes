@@ -27,7 +27,6 @@
 + The SetSelect problem (without cardinality constraints) is known as the weighted set packing problem a well studied NP complete problem from combinatorics
 + Set packing is the dual of set covering, one of the most studied combinatorics problems
 
-
 ## multiple ways to represent fixed cardinality sets
 + var set of OBJ + cardinality 
     * good if the solve natively supports sets
