@@ -21,6 +21,7 @@ constraint card(s)<=u;
 
 var int: obj;
 
+constraint not (dummy in s)  % can be helpful though unnecessary
 constraint sum([joint[i,j] | i in s, j in s where i < j]) > m; % important, i<j, otherwise computed twice
 /*
 or
