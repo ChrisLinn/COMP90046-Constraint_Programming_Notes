@@ -9,3 +9,25 @@ int: m; % minimum joint ability
 
 array[NEGOTIATOR] of int: honor;
 array[NEGOTIATOR,NEGOTIATOR] of int: joint;
+
+
+
+% start
+
+var set of NEGOTIATOR: s;
+
+constraint card(s)>=l;
+constraint card(s)<=u;
+
+var int: obj;
+
+constraint sum([joint[i,j] | i in s, j in s where i < j]) > m; % important, i<j, otherwise computed twice
+/*
+or
+constraint sum(i,j in s where i < j)([joint[i,j]) > m;
+*/
+
+
+constraint obj = min([honor[i] | i in s]);
+
+solve maximize obj;
