@@ -26,7 +26,6 @@ array[NEGOTIATOR,NEGOTIATOR] of int: joint;
 % constraint sum([joint[i,j] | i, j in NEGOTIATOR where (i < j) /\ (occur[i]==1) /\ (occur[j]==1)]) > m;
 
 array[1..u] of NEGOTIATOR: party;
-constraint not (dummy in party)  % can be helpful though unnecessary
 constraint forall(i in 1..l)(party[i]>dummy);
 % or constraint sum(i in 1..u)(party[i] != dummy)>=l;
 constraint forall(i in 1..u)(party[i] >= (party[i]!=dummy) + party[i+1]);
