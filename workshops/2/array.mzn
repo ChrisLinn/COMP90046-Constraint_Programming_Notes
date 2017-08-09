@@ -26,15 +26,18 @@ array[NEGOTIATOR,NEGOTIATOR] of int: joint;
 % constraint sum([joint[i,j] | i, j in NEGOTIATOR where (i < j) /\ (occur[i]==1) /\ (occur[j]==1)]) > m;
 
 array[1..u] of NEGOTIATOR: party;
-constraint forall(i in 1..l)(party[i]>dummy);
+
+constraint forall(i in 1..l)(party[i]!=dummy);
 % or constraint sum(i in 1..u)(party[i] != dummy)>=l;
+
 constraint forall(i in 1..u)(party[i] >= (party[i]!=dummy) + party[i+1]);
-constraint sum(i,j in u where i<j)(join[i,j]) >= m;
+
+constraint sum(i,j in 1.. u where i<j)(join[party[i],party[j]]) >= m;
 
 
 
 
-var int: obj = min([honor[i] | where i in NEGOTIATOR \/ honor[i] != dummy]);
+constraint obj =  (min(j in 1..u)((party[j] = dummy)*(max(honor)+1) + honor[party[j]]));
 
 
 solve maximum obj;
