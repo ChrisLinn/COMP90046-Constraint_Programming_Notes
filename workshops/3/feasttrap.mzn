@@ -24,7 +24,7 @@ array[COURSE] of var DISH: dish;
 
 include "alldifferent.mzn";
 constraint alldifferent(dish);
-constraint forall(c in 1..len-1)(dish[c]!=dish[c+1]);
+constraint forall(c in 1..len-1)(taste[dish[c]]!=taste[dish[c+1]]);
 constraint taste[dish[1]]==salty;
 constraint taste[dish[len]]==sweet;
 constraint forall(c in 1..len-1)
