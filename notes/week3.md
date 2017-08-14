@@ -8,4 +8,4 @@
 + comon subexpression
 + global cardinality
 + value sysmmetries
-    * value proceed chain
+    * `value_precede_chain`
