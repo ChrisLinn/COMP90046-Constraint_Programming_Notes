@@ -14,7 +14,9 @@ constraint inverse(order, posn);
 constraint inverse(differences, dposn);
 constraint alldifferent(differences);
 
-%constraint forall(i in 2..n)(dposn[i-1] = min(posn[1], posn[i]));
+%constraint forall(i in 2..n)(dposn[i-1] = min(posn[1], posn[i])); %guess should be wrong
+
+constraint abs(posn[1] - posn[n]) = 1; % I was missing that
 constraint dposn[n-1] = min(posn[1],posn[n]);
 
 
