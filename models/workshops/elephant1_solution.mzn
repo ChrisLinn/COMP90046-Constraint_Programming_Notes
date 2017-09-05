@@ -18,7 +18,7 @@ set of int: TIME0 = 0..T;
 int: G; % number of guards
 set of int: GUARD = 1..G;
 set of int: GUARD0 = 0..G;
-int: F; 
+int: F;
 set of int: FOOD = 0..F;
 int: W;
 set of int: WATER = 0..W;

@@ -1,9 +1,9 @@
-int: T; % maximum time allowed;
+int: T = 8; % maximum time allowed;
 set of int: TIME = 1..T;
 set of int: TIME0 = 0..T;
-int: G; % number of guards
-int: F; 
-int: W;
+int: G = 2; % number of guards
+int: F = 3; 
+int: W = 3;
 
 array[TIME] of var -F..F: move_food;      % move food +ve bank to boat, -ve boat to bank
 array[TIME] of var -W..W: move_water;     % move water +ve bank to boat, -ve boat to bank
@@ -32,9 +32,9 @@ constraint pos[end] = boat;
 predicate elephant_moves(var FOOD: fdhere, var WATER: wrhere) =
             let {   var FOOD: fdthere = F - fdhere;
                     var WATER: wrthere = W - wrhere; } in
-            fdhere > fdthere
+            fdthere > fdhere
             /\
-            wrhere > wrthere
+            wrthere > wrhere
             /\
             fdthere = wrthere
             ;
