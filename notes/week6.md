@@ -49,3 +49,6 @@
 + Make an educated guess on the maximum possible length of the path
 + sliding sum
     * resting
++ size of models
+    * Run minizinc -k (keep files)
+        - Examine the size of the FlatZinc (.fzn) file
