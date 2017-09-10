@@ -18,6 +18,8 @@ set of int: TIME = 0..total;
 array[PERSON] of var TIME: start;
 var TIME: end;
 
+constraint end = max([start[p] + duration[p] | p in PERSON]);
+
 var 0..card(PERSON): nViolat;
 
 solve minimize end + nViolat;
