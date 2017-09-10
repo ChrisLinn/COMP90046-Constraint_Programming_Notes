@@ -21,6 +21,11 @@ var TIME: end;
 constraint end = max([start[p] + duration[p] | p in PERSON]);
 
 var 0..card(PERSON): nViolat;
+constraint sum(i,j in PERSON where i<j)(
+                (start[i]>start[j])
+                /\
+                (rank[i]<rank[j])
+            )
 
 solve minimize end + nViolat;
 
