@@ -17,3 +17,11 @@ set of int: TIME = 0..total;
 
 array[PERSON] of var TIME: start;
 var TIME: end;
+
+var 0..card(PERSON): nViolat;
+
+solve minimize end + nViolat;
+
+output ["start = \(start);\n"] ++
+        ["end = \(end);\n"] ++
+        ["rank_violations = \(nViolat);"];
