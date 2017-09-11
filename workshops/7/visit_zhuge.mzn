@@ -31,7 +31,7 @@ constraint forall(p in PERSON)(
 constraint forall(p1,p2 in PERSON)(
                 (start[p1] < start[p2])
                 <->
-                ((start[p1] + duration[p1]) < start[p2])
+                ((start[p1] + duration[p1]) <= start[p2])
             );
 
 constraint forall(pr in PREC)(
