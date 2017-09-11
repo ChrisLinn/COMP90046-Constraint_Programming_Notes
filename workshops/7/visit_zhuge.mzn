@@ -24,7 +24,7 @@ constraint forall(p in PERSON)(
                 (
                     let {   var TIME: s_p = starting_day + start[p];
                             var TIME: e_p = starting_day + start[p] + duration[p] } in
-                    forall(d in s_p..e_p)((d mod 7) < 5)
+                    forall(d in s_p..e_p)((d mod 7) <= 5)
                 )
             );
 
