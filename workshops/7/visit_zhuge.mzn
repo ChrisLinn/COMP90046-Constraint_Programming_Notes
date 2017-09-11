@@ -18,6 +18,26 @@ set of int: TIME = 0..total;
 array[PERSON] of var TIME: start;
 var TIME: end;
 
+constraint forall(p in PERSON)(
+                (not on_weekend[p])
+                ->
+                (
+                    let {   var TIME: s_p = starting_day + start[p];
+                            var TIME: e_p = starting_day + start[p] + duration[p] } in
+                    forall(d in s_p..e_p)((d mod 7) < 5)
+                )
+            );
+
+constraint forall(p1,p2 in PERSON)(
+                (start[p1] < start[p2])
+                <->
+                ((start[p1] + duration[p1]) < start[p2])
+            );
+
+constraint forall(pr in PREC)(
+                start[prec[pr,1]] < start[prec[pr,2]]
+            );
+
 constraint end = max([start[p] + duration[p] | p in PERSON]);
 
 var 0..card(PERSON): nViolat;
