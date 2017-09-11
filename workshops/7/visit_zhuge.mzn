@@ -27,15 +27,12 @@ constraint forall(p in PERSON)(
                     forall(d in s_p..e_p)((d mod 7) <= 5)
                 )
             );
-
-constraint forall(p1,p2 in PERSON)(
-                (start[p1] < start[p2])
-                <->
-                ((start[p1] + duration[p1]) <= start[p2])
-            );
+            
+include "disjunctive.mzn";
+constraint disjunctive(start, duration);
 
 constraint forall(pr in PREC)(
-                start[prec[pr,1]] < start[prec[pr,2]]
+                start[prec[pr,1]] + duration[prec[pr,1]] <= start[prec[pr,2]]
             );
 
 constraint end = max([start[p] + duration[p] | p in PERSON]);
@@ -47,7 +44,7 @@ constraint nViolat = sum(i,j in PERSON where i<j)(
                         (rank[i]<rank[j])
                     );
 
-solve minimize (end*total + nViolat);
+solve minimize (end*card(PERSON)*card(PERSON) + nViolat);
 
 output ["start = \(start);\n"] ++
         ["end = \(end);\n"] ++
