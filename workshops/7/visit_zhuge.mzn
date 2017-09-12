@@ -18,13 +18,22 @@ set of int: TIME = 0..total;
 array[PERSON] of var TIME: start;
 var TIME: end;
 
+% constraint forall(p in PERSON)(
+%                 (not on_weekend[p])
+%                 ->
+%                 (
+%                     let {   var TIME: p_start = starting_day + start[p];
+%                             var TIME: p_end = p_start + duration[p] } in
+%                     forall(d in p_start..p_end)((d mod 7) <= 5)
+%                 )
+%             );
+
 constraint forall(p in PERSON)(
                 (not on_weekend[p])
                 ->
                 (
-                    let {   var TIME: p_start = starting_day + start[p];
-                            var TIME: p_end = p_start + duration[p] } in
-                    forall(d in p_start..p_end)((d mod 7) <= 5)
+                    let { var TIME: p_start = starting_day + start[p]; } in
+                    forall(d in 0..duration[p])((p_start + d) mod 7 <= 5)
                 )
             );
             
