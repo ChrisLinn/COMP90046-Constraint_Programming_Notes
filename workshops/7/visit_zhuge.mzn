@@ -28,6 +28,7 @@ constraint forall(p in PERSON)(
                 )
             );
             
+include "cumulative.mzn";
 include "disjunctive.mzn";
 constraint disjunctive(start, duration);
 
@@ -38,7 +39,10 @@ constraint forall(pr in PREC)(
 constraint end = max([start[p] + duration[p] | p in PERSON]);
 
 var 0..card(PERSON): nViolat;
-constraint nViolat = sum(i,j in PERSON where i<j)(
+% constraint nViolat = sum(p1,p2 in PERSON where rank[p1] < rank[p2])(start[p1] > start[p2]);
+% or
+% should not have i<j!!!
+constraint nViolat = sum(i,j in PERSON)(  
                         (start[i]>start[j])
                         /\
                         (rank[i]<rank[j])
