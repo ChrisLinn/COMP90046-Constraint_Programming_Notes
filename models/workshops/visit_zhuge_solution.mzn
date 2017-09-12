@@ -21,6 +21,7 @@ var TIME: end;
 constraint forall(p in PREC)
                  (start[prec[p,1]] + duration[prec[p,1]] <= start[prec[p,2]]);
 
+include "cumulative.mzn";
 include "disjunctive.mzn";
 constraint disjunctive(start, duration);
 
