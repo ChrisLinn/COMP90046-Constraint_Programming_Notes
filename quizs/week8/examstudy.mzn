@@ -21,9 +21,11 @@ constraint forall(p in PREC)(
 include "cumulative.mzn"
 include "disjunctive.mzn"
 constraint disjunctive(start
-                        ++ [(d-1)*H + H div 2 | d in HALF],
+                        ++ [(d-1)*H + H div 2 | d in HALF]
+                        ++ [d*H | d in DAY],
                         hours
-                        ++ [H div 2 | d in HALF]);
+                        ++ [H div 2 | d in HALF]
+                        ++ [0 | d in DAY]);
 
 constraint forall(t in morning)(
                 start[t] mod H  = 0
