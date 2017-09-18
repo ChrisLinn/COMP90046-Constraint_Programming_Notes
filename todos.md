@@ -1,3 +1,5 @@
 # TODOS
-+ week2 tut
-+ week2 asst
++ squares
+    * `constraint cumulative(x, size, size, height);` 
+    * `constraint cumulative(y, size, size, width);` 
+    * `size = [ max(j in SQUARE)(j*(i > base[j])) | i in NSQ];` 
