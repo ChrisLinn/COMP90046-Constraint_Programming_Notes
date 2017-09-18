@@ -18,8 +18,8 @@ constraint forall(p in PREC)(
                 (start[before[p]] + hours[before[p]] <= start[after[p]])
             );
 
-include "cumulative.mzn"
-include "disjunctive.mzn"
+include "cumulative.mzn";
+include "disjunctive.mzn";
 constraint disjunctive(start
                         ++ [(d-1)*H + H div 2 | d in HALF]
                         ++ [d*H | d in DAY],
