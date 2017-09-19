@@ -44,6 +44,16 @@ constraint forall(i in SQUARE)
          [x[base[i]+j+1],y[base[i]+j+1]])));
 
 
+% or ???
+% constraint forall(i in 1..max(size))
+%                 increasing(
+%                     [
+%                         x[j]*maxl + y[j]
+%                     | j in 1..NSQ where j=i
+%                     ]
+%                 )
+%             );
+ 
 solve minimize area;
 
 output ["area = ",show(area), "\n"] ++
