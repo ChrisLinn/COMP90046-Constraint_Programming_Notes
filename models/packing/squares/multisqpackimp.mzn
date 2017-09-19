@@ -43,6 +43,13 @@ constraint forall(i in SQUARE)
       lex_greater([x[base[i]+j],y[base[i]+j]],
          [x[base[i]+j+1],y[base[i]+j+1]])));
 
+% or
+% constraint forall(i,j in NSQ where i<j and size[i]=size[j])
+%    (
+%       lex_greater([x[i],y[i]],
+%          [x[j],y[j]]));
+
+
 
 % or ???
 % constraint forall(i in 1..max(size))
