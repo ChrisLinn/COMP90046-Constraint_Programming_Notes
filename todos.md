@@ -13,3 +13,4 @@
 + scheduling
 + packing
 + symmetry
+    * dominance???
