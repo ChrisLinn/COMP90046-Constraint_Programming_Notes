@@ -5,4 +5,11 @@
     * `size = [ max(j in SQUARE)(j*(i > base[j])) | i in NSQ];` 
 + table
 + value_precede_chain
++ set
++ patrol
++ catapult
++ debug
++ tunnel
++ scheduling
++ packing
 + symmetry
