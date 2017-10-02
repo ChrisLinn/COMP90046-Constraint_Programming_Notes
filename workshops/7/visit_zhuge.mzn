@@ -37,8 +37,9 @@ constraint forall(p in PERSON)(
                 )
             );
             
-include "cumulative.mzn";
-include "disjunctive.mzn";
+include "globals.mzn";
+% include "cumulative.mzn";
+% include "disjunctive.mzn";
 constraint disjunctive(start, duration);
 
 constraint forall(pr in PREC)(
