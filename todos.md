@@ -1,4 +1,7 @@
 # TODOS
++ week2 tut
++ week2 asst
++ disjunctive_strict
 + squares
     * `constraint cumulative(x, size, size, height);` 
     * `constraint cumulative(y, size, size, width);` 
@@ -13,4 +16,5 @@
 + scheduling
 + packing
 + symmetry
+    * dominance???
 + sbprotate
