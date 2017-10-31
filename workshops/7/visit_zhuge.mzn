@@ -52,7 +52,7 @@ var 0..card(PERSON): nViolat;
 % constraint nViolat = sum(p1,p2 in PERSON where rank[p1] < rank[p2])(start[p1] > start[p2]);
 % or
 % should not have i<j!!!
-% need to care about whatif rank[i]<rank[j] and j>i
+% need to care about whatif rank[i]<rank[j] and i>j
 % and because of the comparison, the reverse won't be calculated twice
 constraint nViolat = sum(i,j in PERSON)(  
                         (start[i]>start[j])
